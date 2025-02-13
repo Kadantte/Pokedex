@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  Designed and developed by 2020 skydoves (Jaewoong Eum)
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Designed and developed by 2022 skydoves (Jaewoong Eum)
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-  http://www.apache.org/licenses/LICENSE-2.0
+      http://www.apache.org/licenses/LICENSE-2.0
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,7 +22,7 @@
 
     <variable
       name="pokemon"
-      type="com.skydoves.pokedex.model.Pokemon" />
+      type="com.skydoves.pokedex.core.model.Pokemon" />
 
     <variable
       name="vm"
@@ -29,6 +30,7 @@
   </data>
 
   <androidx.core.widget.NestedScrollView
+    android:id="@+id/nestedScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -85,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="36dp"
-        android:text="@{pokemon.name}"
+        android:text="@{pokemon.name()}"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/white"
         android:textSize="36sp"
@@ -129,8 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name"
-        app:ribbon_recycler_orientation="horizontal"
-        tools:listitem="@layout/item_ribbon" />
+        app:ribbon_recycler_orientation="horizontal" />
 
       <ProgressBar
         android:id="@+id/progressbar"
@@ -230,7 +231,7 @@
         app:progressView_labelColorOuter="@color/black"
         app:progressView_labelSize="12sp"
         app:progressView_labelText="@{vm.pokemonInfo.hpString}"
-        app:progressView_max="@{vm.pokemonInfo.maxHp}"
+        app:progressView_max="@{vm.pokemonInfo.MAX_HP}"
         app:progressView_progress="@{vm.pokemonInfo.hp}"
         app:progressView_radius="12dp" />
 
@@ -260,7 +261,7 @@
         app:progressView_labelColorOuter="@color/black"
         app:progressView_labelSize="12sp"
         app:progressView_labelText="@{vm.pokemonInfo.attackString}"
-        app:progressView_max="@{vm.pokemonInfo.maxAttack}"
+        app:progressView_max="@{vm.pokemonInfo.MAX_ATTACK}"
         app:progressView_progress="@{vm.pokemonInfo.attack}"
         app:progressView_radius="12dp" />
 
@@ -290,7 +291,7 @@
         app:progressView_labelColorOuter="@color/black"
         app:progressView_labelSize="12sp"
         app:progressView_labelText="@{vm.pokemonInfo.defenseString}"
-        app:progressView_max="@{vm.pokemonInfo.maxDefense}"
+        app:progressView_max="@{vm.pokemonInfo.MAX_DEFENSE}"
         app:progressView_progress="@{vm.pokemonInfo.defense}"
         app:progressView_radius="12dp" />
 
@@ -320,7 +321,7 @@
         app:progressView_labelColorOuter="@color/black"
         app:progressView_labelSize="12sp"
         app:progressView_labelText="@{vm.pokemonInfo.speedString}"
-        app:progressView_max="@{vm.pokemonInfo.maxSpeed}"
+        app:progressView_max="@{vm.pokemonInfo.MAX_SPEED}"
         app:progressView_progress="@{vm.pokemonInfo.speed}"
         app:progressView_radius="12dp" />
 
@@ -350,7 +351,7 @@
         app:progressView_labelColorOuter="@color/black"
         app:progressView_labelSize="12sp"
         app:progressView_labelText="@{vm.pokemonInfo.expString}"
-        app:progressView_max="@{vm.pokemonInfo.maxExp}"
+        app:progressView_max="@{vm.pokemonInfo.MAX_EXP}"
         app:progressView_progress="@{vm.pokemonInfo.exp}"
         app:progressView_radius="12dp" />
 
